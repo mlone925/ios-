@@ -11,25 +11,26 @@ interface PhoneFrameProps {
 const PhoneFrame: React.FC<PhoneFrameProps> = ({ children, onHomeClick, homeBarDragY }) => {
   
   const handleDragEnd = (_: any, info: PanInfo) => {
-    // Significantly reduced thresholds for easier/faster closing
+    // Fast swipe up or drag up significantly
     const isFastSwipe = info.velocity.y < -100; 
     const isFarSwipe = info.offset.y < -40;     
 
-    // If dragged up fast or far enough, trigger home action
     if ((isFastSwipe || isFarSwipe) && onHomeClick) {
       onHomeClick();
     }
   };
 
   return (
-    <div className="relative w-full h-full md:w-[420px] md:h-[860px] bg-black md:bg-[#0a0a0a] md:rounded-[68px] md:border-[14px] md:border-[#1a1a1a] md:shadow-2xl overflow-hidden mx-auto md:ring-4 md:ring-black/40 select-none">
+    <div className="relative w-full h-full md:w-[420px] md:h-[860px] bg-black md:bg-[#0a0a0a] md:rounded-[68px] md:border-[14px] md:border-[#1a1a1a] md:shadow-2xl overflow-hidden mx-auto md:ring-4 md:ring-black/40 select-none transform-gpu">
       {/* Screen Content */}
       <div 
-        className="w-full h-full bg-cover bg-center relative overflow-hidden"
+        className="w-full h-full relative overflow-hidden bg-black"
         style={{ 
-            // New Vibrant iOS-style Liquid Gradient Wallpaper
+            // Fallback gradient in case image fails + High Quality Wallpaper
+            background: 'linear-gradient(to bottom, #2c3e50, #000000)',
             backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")',
-            backgroundColor: '#000'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         }}
       >
         {/* Status Bar */}

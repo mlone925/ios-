@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full w-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -14,10 +14,16 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
       body {
-        background-color: #111;
+        background-color: #000;
         color: white;
-        overflow: hidden; /* Prevent body scroll on mobile */
       }
     </style>
   <script type="importmap">
